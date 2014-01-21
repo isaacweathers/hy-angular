@@ -1,0 +1,113 @@
+
+
+/*split-panel css*/
+
+.split-parent {
+  position: relative;
+  min-height: 82px;
+  border: 1px solid #D2D2D2;
+  border-right: 0;
+  border-left: 0;
+  box-sizing: border-box;
+}
+
+.split-parent > aside,
+.split-parent > section {
+  padding: 0;
+  margin: 0;
+}
+
+.panel-left,
+.panel-right,
+.panel-main {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  box-sizing: border-box;
+}
+
+.panel-main {
+  right: 0;
+  left: 0;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.panel-left,
+.panel-right {
+  overflow: hidden;
+  background-color: white;
+}
+
+.panel-left {
+  left: 0;
+  border-right: 1px solid #D2D2D2;
+}
+
+.panel-right {
+  right: 0;
+  border-left: 1px solid #D2D2D2;
+}
+
+.panel-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  padding: 15px 0 0 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+}
+
+.panel-left .panel-content {
+  right: 8px;
+  left: 0;
+}
+
+.panel-right .panel-content {
+  right: 0;
+  left: 8px;
+}
+
+.panel-left .splitter-bar{
+  right:0;
+}
+.panel-right .splitter-bar{
+  left:0;
+}
+
+.splitter-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  height: 100%;
+  min-width: 8px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.panel-right .splitter-bar {
+  background-color: rgb(240,240,240);
+}
+.panel-left .splitter-bar {
+  background-color: rgb(240,240,240);
+}
+
+.panel-left-arrow {
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right:  5px solid gray;
+  position: absolute; 
+  top: 50%
+}
+.panel-right-arrow {
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left:  5px solid gray;
+  position: absolute; 
+  top: 50%
+}
+
