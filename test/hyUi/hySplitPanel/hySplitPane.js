@@ -1,12 +1,15 @@
 'use strict';
 /*global describe:true,beforeEach:true,it:true,inject:true,expect:true,spyOn:true*/
-
 describe('Directive: split-pane', function () {
+    
     beforeEach(module('hySplitPanel'));
+
     var event = document.createEvent('MouseEvents');
     var element, scope, rootScope, compile, window;
     event.initMouseEvent('click', true, true, window, 1, 0, 0);
+    console.log('first beforeEach');
     beforeEach(inject(function ($rootScope) {
+
         scope = $rootScope.$new();
         rootScope = $rootScope;
     }));
@@ -37,10 +40,10 @@ describe('Directive: split-pane', function () {
             '</hy-split-panel>');
         element = compile(element)(scope);
         scope.$digest();
-        expect(element.text()).toBe('  leftPane    contentTest  ');
+        expect(element.text()).toBe('    leftPane    contentTest  ');
         var leftPane = angular.element(element[0].querySelector('aside.panel-left'));
         expect(leftPane.length).toBe(1);
-        expect(leftPane.text()).toBe('  leftPane  ');
+        expect(leftPane.text()).toBe('    leftPane  ');
         var rightPane = angular.element(element[0].querySelector('aside.panel-right'));
         expect(rightPane.length).toBe(0);
     });
@@ -53,12 +56,12 @@ describe('Directive: split-pane', function () {
             '</hy-split-panel>');
         element = compile(element)(scope);
         scope.$digest();
-        expect(element.text()).toBe('  rightPane    contentTest  ');
+        expect(element.text()).toBe('    rightPane    contentTest  ');
         var leftPane = angular.element(element[0].querySelector('aside.panel-left'));
         expect(leftPane.length).toBe(0);
         var rightPane = angular.element(element[0].querySelector('aside.panel-right'));
         expect(rightPane.length).toBe(1);
-        expect(rightPane.text()).toBe('  rightPane  ');
+        expect(rightPane.text()).toBe('    rightPane  ');
     });
 
     it('should test both pane creation', function(){
@@ -70,13 +73,13 @@ describe('Directive: split-pane', function () {
             '</hy-split-panel>');
         element = compile(element)(scope);
         scope.$digest();
-        expect(element.text()).toBe('  leftPane    rightPane    contentTest  ');
+        expect(element.text()).toBe('    leftPane      rightPane    contentTest  ');
         var leftPane = angular.element(element[0].querySelector('aside.panel-left'));
         expect(leftPane.length).toBe(1);
-        expect(leftPane.text()).toBe('  leftPane  ');
+        expect(leftPane.text()).toBe('    leftPane  ');
         var rightPane = angular.element(element[0].querySelector('aside.panel-right'));
         expect(rightPane.length).toBe(1);
-        expect(rightPane.text()).toBe('  rightPane  ');
+        expect(rightPane.text()).toBe('    rightPane  ');
     });
     it('Test default is closed for left pane', function(){
 
