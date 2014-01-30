@@ -3,7 +3,11 @@
 /*split-panel css*/
 
 .split-parent {
-  position: relative;
+  position: absolute;
+  top:146px;
+  bottom: 0;
+  left: 0;
+  right:0;
   min-height: 82px;
   border: 1px solid #D2D2D2;
   border-right: 0;
