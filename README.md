@@ -17,9 +17,9 @@ You can get this either by down loading the code or using bower.
   
 Load the script files into your page
 
-  <script type='text/javascript' src='bower_components/hy-angular/bin/hy-angular.js></script>
+  <script type="text/javascript" src="bower_components/hy-angular/bin/hy-angular.js"></script>
   or
-  <script type='text/javascript' src='bower_components/hy-angular/bin/hy-angular.min.js></script>
+  <script type="text/javascript" src="bower_components/hy-angular/bin/hy-angular.min.js"></script>
   
 Load the CSS file hyCss.css into your app.
 
