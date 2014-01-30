@@ -24,7 +24,18 @@ Load the script files into your page
 Load the CSS file hyCss.css into your app.
 
     <link rel="stylesheet" href="bower_components/hy-angular/css/hyCss.css" />
-  
+
+Inject the module hySplitPanel into you app.  An example would be in your app.js
+
+    angular.module('yourApp', [
+     'ngCookies',
+     'ngResource',
+     'ngSanitize',
+     'ngRoute',
+     'hySplitPanel'
+     ])
+
+
 ##Useage
 To use this just use the following example.
 
