@@ -9,7 +9,9 @@ module.exports = function  (config) {
             'lib/angular-resource/angular-resource.js',
             'lib/angular-route/angular-route.js',
             'src/hyUI/hySplitPanel/*.js',
-            'test/hyUI/hySplitPanel/*.js'
+            'test/hyUI/hySplitPanel/*.js',
+            'src/hyUI/hyImage/*.js',
+            'test/hyUI/hyImage/*.js'
         ],
         exclude:[],
         port:8080,
