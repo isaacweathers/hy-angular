@@ -103,7 +103,6 @@ angular.module('hyImage').directive('hyImage', [
   '$window',
   function ($timeout, $window) {
     var findWidth = function (parentWidth, availableWidths) {
-      console.log(parentWidth + '----');
       var width = 0;
       for (var i = availableWidths.length - 1; i >= 0; i--) {
         if (parentWidth > availableWidths[i]) {
@@ -121,7 +120,7 @@ angular.module('hyImage').directive('hyImage', [
         return b - a;
       });
       for (var i = availablePixel.length - 1; i >= 0; i--) {
-        if (devicePixel > availablePixel[i]) {
+        if (devicePixel >= availablePixel[i]) {
           pixel = availablePixel[i];
         }
       }
@@ -161,8 +160,10 @@ angular.module('hyImage').directive('hyImage', [
           return b - a;
         });
         var p = element.parent();
-        console.log(p.css('width'));
         var parentWidth = p[0].offsetWidth;
+        if (parentWidth === 0) {
+          parentWidth = p.css('width').slice(0, -2);
+        }
         angular.element(window).on('resize', function () {
           if (parentWidth !== p[0].offsetWidth) {
             updateImage(tempString, parentWidth, availableWidths, availablePixel, element, scope);
