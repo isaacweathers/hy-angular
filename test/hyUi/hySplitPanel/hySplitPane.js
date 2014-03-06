@@ -7,7 +7,6 @@ describe('Directive: split-pane', function () {
     var event = document.createEvent('MouseEvents');
     var element, scope, rootScope, compile, window;
     event.initMouseEvent('click', true, true, window, 1, 0, 0);
-    console.log('first beforeEach');
     beforeEach(inject(function ($rootScope) {
 
         scope = $rootScope.$new();
