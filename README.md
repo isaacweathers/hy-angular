@@ -8,5 +8,5 @@ AngularJS 1.2 >
 
 angular UI componets 
 
-(hySplitPane)[hySplitPane.md]
-(hyImage)[hyIamge.md]
+[hySplitPane](hySplitPane.md)
+[hyImage](hyIamge.md)

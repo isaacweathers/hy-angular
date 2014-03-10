@@ -1,6 +1,6 @@
 // ##hy-image
 // This is a responsive image solution based on the 
-// work done by BBC (Iamger.js)[https://github.com/BBC-News/Imager.js/] written in
+// work done by BBC [Iamger.js](https:ithub.com/BBC-News/Imager.js/) written in
 // AngularJS
 // 
 // This works by
