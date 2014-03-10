@@ -1,3 +1,7 @@
+angular.module('hyImage', [
+  'hyImage',
+  'hySplitPanel'
+]);
 angular.module('hySplitPanel', []);
 angular.module('hySplitPanel').directive('hySplitPanel', function () {
   return {

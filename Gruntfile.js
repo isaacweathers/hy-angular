@@ -39,7 +39,7 @@ module.exports = function(grunt) {
         // stripBanners: true
       },
       dist: {
-        src: ['src/hyUI/hySplitPanel/*.js','src/hyUI/hyImage/*.js'],
+        src: ['src/hyUI/hyUI.js','src/hyUI/hySplitPanel/*.js','src/hyUI/hyImage/*.js'],
         dest: '.temp/<%= pkg.name %>.js'
       }
     },
