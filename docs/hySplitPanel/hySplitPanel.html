@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>hySplitPanel.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>hySplitPanel.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h2 id="hy-split-panel">hy-split-panel</h2>
+<p>This is an angular directive for displaying split panels with colapsable left and right panels.  You can have only one
+or both displayed on the page.</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>You can get this either by down loading the code or using bower.</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <pre><code>bower install hy-angular
+</code></pre>
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Load the script files into your page</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <pre><code>&lt;script type=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"bower_components/hy-angular/bin/hy-angular.js"</span>&gt;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+or
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/javascript"</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"bower_components/hy-angular/bin/hy-angular.min.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></span>
+</code></pre>
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Load the CSS file hyCss.css into your app.</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <pre><code>&lt;link rel=<span class="hljs-string">"stylesheet"</span> href=<span class="hljs-string">"bower_components/hy-angular/css/hyCss.css"</span> /&gt;
+</code></pre>
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Inject the module hySplitPanel into you app.  An example would be in your app.js</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <pre><code>angular.module(<span class="hljs-string">'yourApp'</span>, [
+ <span class="hljs-string">'ngCookies'</span>,
+ <span class="hljs-string">'ngResource'</span>,
+ <span class="hljs-string">'ngSanitize'</span>,
+ <span class="hljs-string">'ngRoute'</span>,
+ <span class="hljs-string">'hySplitPanel'</span>
+ ])
+</code></pre>
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <h2 id="useage">Useage</h2>
+<p>To use this just use the following example.</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <pre><code>&lt;hy-split-panel left-width-<span class="hljs-string">'30%'</span> split-pane-id=<span class="hljs-string">'homePane'</span>&gt;
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'leftPane'</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span>Left Side<span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'contentPane'</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span>Content<span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">hy-split-panel</span>&gt;</span></span>
+</code></pre>
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>This will display a left pane that is closed and a content pane in the middle.  When you click on the exspand bar it
+will expand to 30% of the page.</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <pre><code>&lt;hy-split-panel right-width-<span class="hljs-string">'30%'</span> split-pane-id=<span class="hljs-string">'homePane'</span>&gt;
+   <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'rightPane'</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span>Right Side<span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'contentPane'</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span>Content<span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">hy-split-panel</span>&gt;</span></span>
+</code></pre>
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>This will display a right pane that is closed and a content pane in the middle.  When you click on the exspand bar it
+will expand to 30% of the page.
+To display both left and right panes.</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <pre><code>&lt;hy-split-panel left-width-<span class="hljs-string">'30%'</span> right-width-<span class="hljs-string">'30%'</span> split-pane-id=<span class="hljs-string">'homePane'</span>&gt;
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'leftPane'</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span>Left Side<span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'rightPane'</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span>Right Side<span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'contentPane'</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span>Content<span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">hy-split-panel</span>&gt;</span></span>
+</code></pre>
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>If you want to have the pane open by default add the attribute default-open.  you can add two callback functions with </p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <blockquote>
+<p>expand-event=’someFunctionOnScope’ </p>
+</blockquote>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>and </p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <blockquote>
+<p>collapseEvent=’someFunctionOnScope’  </p>
+</blockquote>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>The .split-parent css is where you can set the top of the directive if it is not displaying properly.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+angular.module(<span class="hljs-string">'hySplitPanel'</span>, []);
+
+angular.module(<span class="hljs-string">'hySplitPanel'</span>).
+    directive(<span class="hljs-string">'hySplitPanel'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Runs during compile</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">return</span> {
+            template: <span class="hljs-string">'&lt;div class=\'split-parent\'&gt;'</span> +
+                    <span class="hljs-string">'&lt;aside class=\'panel-left\'&gt;'</span> +
+                    <span class="hljs-string">'&lt;div class=" splitter-bar" ng-click=\'toggleLeftBar()\'&gt; '</span> +
+                    <span class="hljs-string">'&lt;div class=\'panel-left-arrow\'&gt;&lt;/div&gt; '</span> +
+                    <span class="hljs-string">'&lt;/div&gt;'</span> +
+                    <span class="hljs-string">'&lt;div class="panel-content"&gt;'</span> +
+                    <span class="hljs-string">'&lt;/div&gt;'</span> +
+                    <span class="hljs-string">'&lt;/aside&gt;'</span> +
+                    <span class="hljs-string">'&lt;aside class=\'panel-right\'&gt;'</span> +
+                    <span class="hljs-string">'&lt;div class=" splitter-bar" ng-click=\'toggleRightBar()\'&gt; '</span>+
+                    <span class="hljs-string">'&lt;div class=\'panel-right-arrow\'&gt;&lt;/div&gt; '</span> +
+                    <span class="hljs-string">'&lt;/div&gt;'</span> +
+                    <span class="hljs-string">'&lt;div class="panel-content"&gt;'</span> +
+                    <span class="hljs-string">'&lt;/div&gt;'</span> +
+                    <span class="hljs-string">'&lt;/aside&gt;'</span> +
+                    <span class="hljs-string">'&lt;section class=\'panel-main\'&gt;'</span> +
+                    <span class="hljs-string">'&lt;/section&gt;'</span> +
+                    <span class="hljs-string">'&lt;/div&gt;'</span> ,
+        restrict: <span class="hljs-string">'E'</span>,
+        transclude:<span class="hljs-literal">true</span>,
+            link: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(scope, element, attrs, controller, transclude)</span> {</span>
+                <span class="hljs-keyword">var</span> templateElement = element[<span class="hljs-number">0</span>];
+                <span class="hljs-keyword">var</span> headElement = angular.element(templateElement.querySelector(<span class="hljs-string">'.split-parent'</span>));
+                headElement[<span class="hljs-number">0</span>].id = attrs.splitPaneId||<span class="hljs-string">''</span>;
+                <span class="hljs-keyword">var</span> leftElementWidth = attrs.leftWidth || <span class="hljs-string">'8px'</span>;
+                <span class="hljs-keyword">var</span> rightElementWidth = attrs.rightWidth || <span class="hljs-string">'8px'</span>;
+                <span class="hljs-keyword">var</span> toggleLeftClose = attrs.defaultOpen || <span class="hljs-literal">false</span>;
+                <span class="hljs-keyword">var</span> toggleRightClose = attrs.defaultOpen || <span class="hljs-literal">false</span>;
+                <span class="hljs-keyword">var</span> hasLeftPane = <span class="hljs-literal">false</span>;
+                <span class="hljs-keyword">var</span> hasRightPane = <span class="hljs-literal">false</span>;
+                <span class="hljs-keyword">var</span> leftElement = angular.element(templateElement.querySelector(<span class="hljs-string">'aside.panel-left'</span>));
+                <span class="hljs-keyword">var</span> leftContent = angular.element(templateElement.querySelector(<span class="hljs-string">'aside.panel-left .panel-content'</span>));
+                <span class="hljs-keyword">var</span> rightElement = angular.element(templateElement.querySelector(<span class="hljs-string">'aside.panel-right'</span>));
+                <span class="hljs-keyword">var</span> rightContent = angular.element(templateElement.querySelector(<span class="hljs-string">'aside.panel-right .panel-content'</span>));
+                <span class="hljs-keyword">var</span> leftArrowElement = angular.element(templateElement.querySelector(<span class="hljs-string">'aside.panel-left .splitter-bar &gt; div'</span>));
+                <span class="hljs-keyword">var</span> rightArrowElement = angular.element(templateElement.querySelector(<span class="hljs-string">'aside.panel-right .splitter-bar &gt; div'</span>));
+                
+                <span class="hljs-keyword">var</span> sectionElement = element.find(<span class="hljs-string">'section'</span>);
+                
+                <span class="hljs-keyword">var</span> expandCallback = scope.$<span class="hljs-built_in">eval</span>(attrs.expandEvent) || <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span>{</span>};
+                <span class="hljs-keyword">var</span> collapseCallback = scope.$<span class="hljs-built_in">eval</span>(attrs.collapseEvent) || <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span>{</span>};
+                transclude(scope,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(clone)</span>{</span>
+                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; clone.length; i++) {
+                        <span class="hljs-keyword">var</span> el =angular.element(clone[i]);
+                        <span class="hljs-keyword">if</span>(el.hasClass(<span class="hljs-string">'leftPane'</span>)){
+                            leftContent.append(clone[i]);
+                            hasLeftPane = <span class="hljs-literal">true</span>;
+                        }
+                        <span class="hljs-keyword">if</span>(el.hasClass(<span class="hljs-string">'contentPane'</span>)){
+                            sectionElement.append(clone[i]);
+                        }
+                        <span class="hljs-keyword">if</span>(el.hasClass(<span class="hljs-string">'rightPane'</span>)){
+                            rightContent.append(clone[i]);
+                            hasRightPane = <span class="hljs-literal">true</span>;
+                        }
+                    }
+                    <span class="hljs-keyword">if</span>(!hasRightPane){
+                        rightElement.remove();
+                    }
+                    <span class="hljs-keyword">if</span>(!hasLeftPane){
+                        leftElement.remove();
+                    }
+                });
+            
+                <span class="hljs-keyword">var</span> toggleLeft = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span>{</span>
+                    <span class="hljs-keyword">if</span>(toggleLeftClose){
+                        leftElement.css(<span class="hljs-string">'width'</span>,leftElementWidth);
+                        sectionElement.css(<span class="hljs-string">'left'</span>,leftElementWidth);
+                        expandCallback();
+                        toggleLeftClose = <span class="hljs-literal">false</span>;
+                    }<span class="hljs-keyword">else</span>{
+                        leftElement.css(<span class="hljs-string">'width'</span>,<span class="hljs-string">'8px'</span>);
+                        sectionElement.css(<span class="hljs-string">'left'</span>,<span class="hljs-string">'8px'</span>);
+                        collapseCallback();
+                        toggleLeftClose = <span class="hljs-literal">true</span>;
+                    }
+                    leftArrowElement.toggleClass(<span class="hljs-string">'panel-left-arrow'</span>);
+                    leftArrowElement.toggleClass(<span class="hljs-string">'panel-right-arrow'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>element.toggleClass(‘shut-left’);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                };
+
+                <span class="hljs-keyword">var</span> toggleRight = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span>{</span>
+                    <span class="hljs-keyword">if</span>(toggleRightClose){
+                        rightElement.css(<span class="hljs-string">'width'</span>,rightElementWidth);
+                        sectionElement.css(<span class="hljs-string">'right'</span>,rightElementWidth);
+                        expandCallback();
+                        toggleRightClose = <span class="hljs-literal">false</span>;
+                    }<span class="hljs-keyword">else</span>{
+
+                        rightElement.css(<span class="hljs-string">'width'</span>,<span class="hljs-string">'8px'</span>);
+                        sectionElement.css(<span class="hljs-string">'right'</span>,<span class="hljs-string">'8px'</span>);
+                        collapseCallback();
+                        toggleRightClose = <span class="hljs-literal">true</span>;
+                    }
+                    rightArrowElement.toggleClass(<span class="hljs-string">'panel-left-arrow'</span>);
+                    rightArrowElement.toggleClass(<span class="hljs-string">'panel-right-arrow'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p>element.toggleClass(‘shut-right’);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                };
+
+
+                scope.toggleLeftBar = toggleLeft;
+                scope.toggleRightBar = toggleRight;
+                <span class="hljs-keyword">if</span>(toggleLeftClose){
+                    leftArrowElement.toggleClass(<span class="hljs-string">'panel-left-arrow'</span>);
+                    leftArrowElement.toggleClass(<span class="hljs-string">'panel-right-arrow'</span>);
+                }
+                <span class="hljs-keyword">if</span>(toggleRightClose){
+                    rightArrowElement.toggleClass(<span class="hljs-string">'panel-left-arrow'</span>);
+                    rightArrowElement.toggleClass(<span class="hljs-string">'panel-right-arrow'</span>);
+                }
+                <span class="hljs-keyword">if</span>(hasLeftPane){
+                    toggleLeft();
+                }
+                <span class="hljs-keyword">if</span>(hasRightPane) {
+                    toggleRight();
+                }
+                }
+        };
+    });</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

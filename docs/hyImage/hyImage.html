@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>hyImage.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>hyImage.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h2 id="hy-image">hy-image</h2>
+<p>This is a responsive image solution based on the 
+work done by BBC (Iamger.js)[<a href="https://github.com/BBC-News/Imager.js/">https://github.com/BBC-News/Imager.js/</a>] written in
+AngularJS</p>
+<p>This works by</p>
+<ul>
+<li>loading any image once</li>
+<li>loading the most suitable sized image</li>
+</ul>
+<hr>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <pre><code>&lt;hy-image img-src=<span class="hljs-string">"somesource/image||width||.jpg"</span> sizes=<span class="hljs-string">"[400,1080]"</span> pixel=<span class="hljs-string">"[1,2,3]"</span>&gt;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">hy-image</span>&gt;</span></span>
+</code></pre><p>This will create an img with the src of ‘somesource/image400.jpg’ or  ‘somesource/image1080.jpg’ depending
+for the correct width.</p>
+<pre><code>&lt;hy-image img-src=<span class="hljs-string">"somesource/image||pixel||.jpg"</span> sizes=<span class="hljs-string">"[400,1080]"</span> pixel=<span class="hljs-string">"[1,2,3]"</span>&gt;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">hy-image</span>&gt;</span></span>
+</code></pre><p>This will create an img with the srouce somesource/image.jpg for ratio of 1 for apple phones it 
+will create src with somesrouce/image-2x.jpg
+As you resize the window the image will be replace with the correct size image.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-pi">'use strict'</span>;
+
+angular.module(<span class="hljs-string">'hyImage'</span>, []);
+
+angular.module(<span class="hljs-string">'hyImage'</span>)
+.directive(<span class="hljs-string">'hyImage'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($timeout,$window)</span> {</span>
+    <span class="hljs-keyword">var</span> findWidth = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(parentWidth, availableWidths)</span>{</span>
+        <span class="hljs-keyword">var</span> width = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = availableWidths.length - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) {
+          <span class="hljs-keyword">if</span>(parentWidth &gt; availableWidths[i]){
+            width = availableWidths[i];
+          }
+        }
+        <span class="hljs-keyword">if</span>(width === <span class="hljs-number">0</span> ){
+          width = availableWidths[availableWidths.length -<span class="hljs-number">1</span>];
+        }
+        <span class="hljs-keyword">return</span> width;
+      };
+
+    <span class="hljs-keyword">var</span> findPixle = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(devicePixel, availablePixel)</span>{</span>
+      <span class="hljs-keyword">var</span> pixel = <span class="hljs-number">1</span>;
+      availablePixel.sort(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">( a, b)</span>{</span>
+        <span class="hljs-keyword">return</span> (b-a);
+      });
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = availablePixel.length - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) {
+        <span class="hljs-keyword">if</span>(devicePixel &gt;= availablePixel[i]){
+          pixel = availablePixel[i];
+        }
+      }
+      <span class="hljs-keyword">return</span> pixel === <span class="hljs-number">1</span> ? <span class="hljs-string">''</span> : <span class="hljs-string">'-'</span> + pixel + <span class="hljs-string">'x'</span>;
+    };
+
+    <span class="hljs-keyword">var</span> updateImage = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(tempString, parentWidth, availableWidths, availablePixel, element, scope)</span>{</span>
+      <span class="hljs-keyword">var</span> thisWidth = findWidth(parentWidth, availableWidths);
+      <span class="hljs-keyword">var</span> pixelRatio = $window.devicePixelRatio || <span class="hljs-number">1</span>;
+      <span class="hljs-keyword">var</span> thisPixel = findPixle(pixelRatio, availablePixel);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>var widthString = tempString.replace(‘||width||’, thisWidth);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      scope.realImage = tempString.replace(<span class="hljs-string">'||width||'</span>, thisWidth).replace(<span class="hljs-string">'||pixelRatio||'</span>, thisPixel);
+      <span class="hljs-keyword">var</span> image = element.find(<span class="hljs-string">'img'</span>);
+      <span class="hljs-keyword">var</span> himage = angular.element(image[<span class="hljs-number">0</span>]);
+
+      himage.on(<span class="hljs-string">'load'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span>{</span>
+        scope.imgLoaded = <span class="hljs-literal">true</span>;
+        scope.$apply();
+      });
+      $timeout(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+        scope.$apply();
+      });
+      <span class="hljs-keyword">return</span> thisWidth;
+    };
+    <span class="hljs-keyword">return</span> {
+        template: <span class="hljs-string">'&lt;div&gt;&lt;img ng-show="imgLoaded" ng-src="{{realImage}}"&gt;&lt;/img&gt;'</span> +
+        <span class="hljs-string">'&lt;img ng-hide="imgLoaded" src="{{imgSrc}}"&gt;&lt;/img&gt;&lt;/div&gt;'</span>,
+        restrict: <span class="hljs-string">'E'</span>,
+        replace: <span class="hljs-literal">true</span>,
+        scope:{
+
+        },
+        link: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postLink</span><span class="hljs-params">(scope, element, attrs)</span> {</span>
+            scope.imageTempUrl = attrs.imgSrc;
+            scope.imgLoaded = <span class="hljs-literal">false</span>;
+            <span class="hljs-keyword">var</span> availableWidths = scope.$<span class="hljs-built_in">eval</span>(attrs.sizes);
+            <span class="hljs-keyword">var</span> availablePixel = scope.$<span class="hljs-built_in">eval</span>(attrs.pixel)|| [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
+            availableWidths.sort(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">( a, b)</span>{</span>
+                <span class="hljs-keyword">return</span> (b-a);
+              });
+            <span class="hljs-keyword">var</span> p = element.parent();
+            <span class="hljs-keyword">var</span> parentWidth = p[<span class="hljs-number">0</span>].offsetWidth;
+            <span class="hljs-keyword">if</span>(parentWidth === <span class="hljs-number">0</span>){
+              parentWidth = p.css(<span class="hljs-string">'width'</span>).slice(<span class="hljs-number">0</span>,-<span class="hljs-number">2</span>);
+            }
+            angular.element(window).on(<span class="hljs-string">'resize'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span>{</span>
+                <span class="hljs-keyword">if</span>(parentWidth !== p[<span class="hljs-number">0</span>].offsetWidth){
+                  updateImage(tempString, parentWidth, availableWidths,availablePixel, element, scope);
+                  parentWidth = p[<span class="hljs-number">0</span>].offsetWidth;
+                }
+              });
+            <span class="hljs-keyword">var</span> tempString = scope.imageTempUrl;
+            <span class="hljs-keyword">var</span> thisWidth = updateImage(tempString, parentWidth, availableWidths,availablePixel, element, scope);
+            scope.imgSrc = <span class="hljs-string">'http://placehold.it/'</span>+thisWidth;
+            attrs.$observe(<span class="hljs-string">'imgSrc'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(value)</span>{</span>
+              updateImage(value, parentWidth, availableWidths,availablePixel, element, scope);
+            });
+          }
+      };
+  });</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

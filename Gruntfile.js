@@ -98,7 +98,24 @@ module.exports = function(grunt) {
         files: '<%= jshint.lib_test.src %>',
         tasks: ['jshint:lib_test', 'qunit']
       }
-    }
+    },
+    docco: {
+            options: {
+                dst: './docs/',
+                layout: 'linear'
+            },
+            docs: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: './src/hyUi/',
+                        src: [
+                            '**/*.js'
+                        ]
+                    }
+                ]
+            }
+          }
   });
 
   // These plugins provide necessary tasks.
