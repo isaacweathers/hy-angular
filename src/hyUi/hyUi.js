@@ -1,1 +1,1 @@
-angular.module('hyImage', ['hyImage','hySplitPanel']);
+angular.module('hyUi', ['hyImage','hySplitPanel']);

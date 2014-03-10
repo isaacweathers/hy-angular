@@ -1,4 +1,4 @@
-angular.module('hyImage', [
+angular.module('hyUi', [
   'hyImage',
   'hySplitPanel'
 ]);
