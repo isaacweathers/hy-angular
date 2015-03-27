@@ -1,4 +1,4 @@
-angular.module('hyUi', [
+jcdangular.module('hyUi', [
   'hyImage',
   'hySplitPanel'
 ]);

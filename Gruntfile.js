@@ -115,7 +115,16 @@ module.exports = function(grunt) {
                     }
                 ]
             }
-          }
+          },
+    bump: {
+      options: {
+        files: [
+          'bower.json',
+          'package.json'
+        ],
+        pushTo: 'origin'
+      }
+    }
   });
 
   // These plugins provide necessary tasks.
